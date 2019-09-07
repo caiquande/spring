@@ -1,7 +1,7 @@
 package com.galaxy.libra.dom.biz.factory;
 
-import com.galaxy.libra.dom.biz.service.es.EsDML;
-import com.galaxy.libra.dom.biz.service.es.EsDQL;
+import com.galaxy.libra.dom.biz.service.es.EsDml;
+import com.galaxy.libra.dom.biz.service.es.EsDql;
 import com.galaxy.libra.dom.biz.service.oracle.OracleDQL;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,13 +19,13 @@ import org.springframework.context.annotation.Configuration;
 public class ServiceFactory {
 
     @Bean
-    public EsDML getEsDML() {
-        return new EsDML();
+    public EsDml getEsDML() {
+        return new EsDml();
     }
 
     @Bean
-    public EsDQL getEsDQL() {
-        return new EsDQL();
+    public EsDql getEsDQL() {
+        return new EsDql();
     }
 
     @Bean

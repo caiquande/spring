@@ -20,11 +20,11 @@ import java.util.Properties;
  * @time 13:41
  * @p_name spring
  */
-@Component
-public class KafkaDDL implements DataDDL,AutoCloseable {
+
+public class KafkaDdl implements DataDDL,AutoCloseable {
     private AdminClient adminClient;
 
-    public KafkaDDL(@Value("${kafka.servers}") String url) {
+    public KafkaDdl(@Value("${kafka.servers}") String url) {
         adminClient = getAdim(url);
     }
 

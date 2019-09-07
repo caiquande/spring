@@ -5,6 +5,16 @@ import org.apache.kafka.common.serialization.Serializer;
 
 import java.util.Map;
 
+/**
+ * @author caesar
+ * @title
+ * @description
+ * @package com.galaxy.libra.dom.biz.agg
+ * @date 2019-08-26
+ * @time 15:39
+ * @p_name bigdataplatform
+ */
+
 public class KafkaMessageSeiria implements Serializer<KafkaMessage> {
 
     @Override

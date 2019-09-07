@@ -18,14 +18,12 @@ import java.util.Properties;
  * @p_name bigdataplatform
  */
 @Data
-@AllArgsConstructor
 @Component
-@ConfigurationProperties(prefix = "kafka")
 public class KafkaConsumerConfig {
-    private String servers;
-    private String kDes;
-    private String vDes;
-    private String group;
+    private @Value("${kafka.servers}") String servers;
+    private @Value("${kafka.kDes}") String kDes;
+    private @Value("${kafka.vDes}") String vDes;
+    private @Value("${kafka.group}") String group;
 
     public Properties getProps() {
         final Properties properties = new Properties();

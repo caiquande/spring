@@ -3,7 +3,7 @@ package com.galaxy.libra.dom.biz.service.oracle;
 import com.galaxy.libra.dom.biz.entity.client.EsClient;
 import com.galaxy.libra.dom.biz.entity.client.OracleClient;
 import com.galaxy.libra.dom.biz.service.DataDML;
-import com.galaxy.libra.dom.biz.service.es.EsDML;
+import com.galaxy.libra.dom.biz.service.es.EsDml;
 import com.galaxy.libra.dom.biz.vo.es.listener.BulkInsertListener;
 import org.springframework.stereotype.Component;
 
@@ -23,25 +23,28 @@ import java.util.concurrent.TimeUnit;
  * @p_name spring
  */
 @Component
-public class OracleDMl implements DataDML {
+public class OracleDml implements DataDML {
 
-    //todo to finish
+    /**
+     * todo to finish
+     *
+     */
     public void oracleHistoryToEs(int perThreadLoaded,
                                   String minIdSql,
                                   String maxIdSql,
                                   String indexName,
                                   String extractOracleSql,
                                   OracleClient oracleClient,
-                                  OracleDQL oracleDQL,
-                                  EsDML esDML,
+                                  OracleDQL oracleDql,
+                                  EsDml esDml,
                                   EsClient esClient) throws Exception {
-        final Long minId = oracleDQL.getLongRes(oracleClient, minIdSql);
-        final Long maxId = oracleDQL.getLongRes(oracleClient, maxIdSql);
+        final Long minId = oracleDql.getLongRes(oracleClient, minIdSql);
+        final Long maxId = oracleDql.getLongRes(oracleClient, maxIdSql);
         final ForkJoinPool pool = new ForkJoinPool(4);
         final Callable<Boolean> callable = () -> {
-            final List<Map<String, Object>> extractOracle = oracleDQL.runSingleSql(oracleClient, extractOracleSql);
+            final List<Map<String, Object>> extractOracle = oracleDql.runSingleSql(oracleClient, extractOracleSql);
             final BulkInsertListener bulkInsertListener = new BulkInsertListener(BulkInsertListener.getCallabl());
-            esDML.bulkInsert(esClient, indexName, extractOracle, "id", bulkInsertListener);
+            esDml.bulkInsert(esClient, indexName, extractOracle, "id", bulkInsertListener);
             return bulkInsertListener.get();
         };
         final TransportTask loadTask = new TransportTask(perThreadLoaded, minId, maxId, callable);

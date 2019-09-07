@@ -1,4 +1,4 @@
-package com.galaxy.libra.dom.biz.agg.es.riskInsuredAmnt;
+package com.galaxy.libra.dom.biz.agg.es.riskinsuredamnt;
 
 import com.galaxy.libra.dom.biz.entity.client.EsClient;
 import org.elasticsearch.action.search.SearchRequest;
@@ -32,16 +32,17 @@ public class CalType2 extends RiskInsuredAmntBase {
                        String toSumField, double factor,double adder,int years) throws Exception{
         if (size==147||size==149||size==152||size==154||size==155)
         {
-            new CT147155().CT2Special0(esClient,indexName,insuredNo,riskCode,polNo,toGroupField,toSumField,factor,adder);
+            new Ct147155().Ct2Special0(esClient,indexName,insuredNo,riskCode,polNo,toGroupField,toSumField,factor,adder);
         } else if (size == 159 || size == 160 || size == 161 || size == 163 || size == 164) {
-            new CT170172().CT2Special1(esClient, indexName, insuredNo, riskCode, polNo, toGroupField, toSumField, factor, years);
+            new Ct170172().Ct2Special1(esClient, indexName, insuredNo, riskCode, polNo, toGroupField, toSumField, factor, years);
         }
 
     }
 
-    static class CT147155 {
+    static class Ct147155 {
         //147,149,152,154,155
-        public double CT2Special0(EsClient esClient, String indexName, String insuredNo, String riskCode, String polNo, String toGroupField, String toSumField,
+        public double Ct2Special0(EsClient esClient, String indexName, String insuredNo, String riskCode, String polNo, String toGroupField,
+                                  String toSumField,
                                   double factor, double adder) throws Exception {
             final Callable<BoolQueryBuilder> queryBuilderCallable = () -> {
                 return QueryBuilders.boolQuery()
@@ -58,11 +59,11 @@ public class CalType2 extends RiskInsuredAmntBase {
         }
     }
 
-    //159,160,161,162,163,164,168 equals CT14Special1
+    //159,160,161,162,163,164,168 equals Ct14Special1
 
-    static class CT170172 {
+    static class Ct170172 {
         //170,172
-        public double CT2Special1(EsClient esClient, String indexName, String insuredNo,
+        public double Ct2Special1(EsClient esClient, String indexName, String insuredNo,
                                   String riskCode, String polNo, String toGroupField, String toSumField,
                                   double factor, int payyears) throws Exception {
             final Callable<BoolQueryBuilder> queryBuilderCallable = () -> {
@@ -81,9 +82,10 @@ public class CalType2 extends RiskInsuredAmntBase {
         }
     }
 
-    static class CT449 {
+    static class Ct449 {
         //449
-        public double CT2Special449P1(EsClient esClient, String indexName, String insuredNo, String riskCode, String polNo, String toGroupField, String toSumField,
+        public double Ct2Special449P1(EsClient esClient, String indexName, String insuredNo, String riskCode, String polNo,
+                                      String toGroupField, String toSumField,
                                       double factor) throws Exception {
             int[] payendyears = new int[]{10, 15, 20};
             final Callable<BoolQueryBuilder> queryBuilderCallable = () -> {
@@ -98,7 +100,8 @@ public class CalType2 extends RiskInsuredAmntBase {
             return runSum0Ext(esClient, indexName, insuredNo, riskCode, polNo, toGroupField, toSumField, factor, queryBuilderCallable);
         }
 
-        public double CT2Special449P2(EsClient esClient, String indexName, String insuredNo, String riskCode, String polNo, String toGroupField, String toSumField,
+        public double Ct2Special449P2(EsClient esClient, String indexName, String insuredNo, String riskCode, String polNo,
+                                      String toGroupField, String toSumField,
                                       double factor) throws Exception {
             final Callable<BoolQueryBuilder> queryBuilderCallable = () -> {
                 return QueryBuilders.boolQuery()
@@ -116,13 +119,14 @@ public class CalType2 extends RiskInsuredAmntBase {
             return runSum0Ext(esClient, indexName, insuredNo, riskCode, polNo, toGroupField, toSumField, factor, queryBuilderCallable);
         }
 
-        public double CT2Special2(EsClient esClient, String indexName, String insuredNo, String riskCode, String polNo, String toGroupField, String toSumField, double factor) throws Exception {
-            return CT2Special449P1(esClient, indexName, insuredNo, riskCode, polNo, toGroupField, toSumField, 3) +
-                    CT2Special449P2(esClient, indexName, insuredNo, riskCode, polNo, toGroupField, toSumField, 1);
+        public double Ct2Special2(EsClient esClient, String indexName, String insuredNo, String riskCode, String polNo, String toGroupField,
+                                  String toSumField, double factor) throws Exception {
+            return Ct2Special449P1(esClient, indexName, insuredNo, riskCode, polNo, toGroupField, toSumField, 3) +
+                    Ct2Special449P2(esClient, indexName, insuredNo, riskCode, polNo, toGroupField, toSumField, 1);
         }
     }
 
-    static class CT482 {
+    static class Ct482 {
         //482
         //todo modify the method body
         public static double callCalaccval(String contno) {
@@ -158,7 +162,8 @@ public class CalType2 extends RiskInsuredAmntBase {
             }
         }
 
-        public double CT2Special3(EsClient esClient, String indexName, String contno, String insuredNo, String riskCode, String polNo, String toGroupField, String toSumField,
+        public double Ct2Special3(EsClient esClient, String indexName, String contno, String insuredNo, String riskCode, String polNo,
+                                  String toGroupField, String toSumField,
                                   double factor) throws Exception {
             final String edorno = selectEdorno(esClient, contno);
             Callable<BoolQueryBuilder> queryBuilderCallable3 = null;
@@ -209,10 +214,11 @@ public class CalType2 extends RiskInsuredAmntBase {
         }
     }
 
-    static class CT642 {
+    static class Ct642 {
         //642
         // todo calMax date format need to test
-        public double CT2Special4(EsClient esClient, String indexName, String contno, String insuredNo, String riskCode, String polNo, String toGroupField, String toSumField,
+        public double Ct2Special4(EsClient esClient, String indexName, String contno, String insuredNo, String riskCode, String polNo,
+                                  String toGroupField, String toSumField,
                                   double factor) throws Exception {
             double part0 = 0.0;
             double part3 = 0.0;
@@ -280,9 +286,9 @@ public class CalType2 extends RiskInsuredAmntBase {
         }
     }
 
-    static class CT10031007 {
+    static class Ct10031007 {
         //1003,1007
-        public double CT2Special5(EsClient esClient, String indexName, String contno, String insuredNo, String riskCode, String polNo,
+        public double Ct2Special5(EsClient esClient, String indexName, String contno, String insuredNo, String riskCode, String polNo,
                                   String toGroupField,
                                   String toSumField, double factor) throws Exception {
             double part1 = 0.0;
@@ -301,7 +307,7 @@ public class CalType2 extends RiskInsuredAmntBase {
                                 .mustNot(QueryBuilders.termQuery("appflag", 9));
                     };
             part1 = runSum0Ext(esClient, indexName, insuredNo, riskCode, polNo, toGroupField, toSumField, factor, queryBuilderCallable1);
-            final String edorno = CT482.selectEdorno(esClient, contno);
+            final String edorno = Ct482.selectEdorno(esClient, contno);
             final Callable<BoolQueryBuilder> queryBuilderCallable2 = () -> {
                 return QueryBuilders.boolQuery()
                         .must(QueryBuilders.termQuery("edortype", "IA"))
@@ -338,7 +344,7 @@ public class CalType2 extends RiskInsuredAmntBase {
             } else {
                 maxp34 = part4;
             }
-            final double val = maxp12 - maxp12 / maxp34 * CT482.callCalaccval(contno);
+            final double val = maxp12 - maxp12 / maxp34 * Ct482.callCalaccval(contno);
             return new BigDecimal(val).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue() * -1;
         }
 

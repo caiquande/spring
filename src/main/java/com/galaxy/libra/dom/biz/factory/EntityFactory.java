@@ -4,13 +4,12 @@ import com.galaxy.libra.dom.biz.entity.client.EsClient;
 import com.galaxy.libra.dom.biz.entity.client.OracleClient;
 import com.galaxy.libra.dom.biz.entity.consumer.KafkaConsume;
 import com.galaxy.libra.dom.biz.entity.provider.KafkaProvide;
-import com.galaxy.libra.dom.biz.service.es.EsDML;
-import com.galaxy.libra.dom.biz.service.es.EsDQL;
-import com.galaxy.libra.dom.biz.service.oracle.OracleDQL;
+import com.galaxy.libra.infra.config.EsConfig;
 import com.galaxy.libra.infra.config.KafkaConsumerConfig;
 import com.galaxy.libra.infra.config.KafkaProviderConfig;
-import org.springframework.beans.factory.annotation.Value;
+import com.galaxy.libra.infra.config.OracleClientConfig;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -23,37 +22,18 @@ import org.springframework.context.annotation.Configuration;
  * @p_name spring
  */
 @Configuration
+@ComponentScan(basePackages = "com.galaxy.libra.infra.config")
 public class EntityFactory {
 
     @Bean
-    public EsClient getEsClient(@Value("${es.host}") String host,
-                                @Value("${es.port}") int port,
-                                @Value("http") String http) {
-        return new EsClient(host, port, http);
+    public EsClient getEsClient(EsConfig esConfig) {
+        return new EsClient(esConfig);
     }
 
     @Bean
-    public OracleClient getOrcl(@Value("${oracle.user}") String user,
-                                @Value("${oracle.pw}") String pw,
-                                @Value("${oracle.url}") String url) {
-        return new OracleClient(user, pw, url);
+    public OracleClient getOrcl(OracleClientConfig config) {
+        return new OracleClient(config);
     }
-
-    @Bean
-    public KafkaProviderConfig getKPconfig(@Value("${kafka.bootstrap.servers}") String servers,
-                                           @Value("${kafka.key.serializer}") String keySeri,
-                                           @Value("${kafka.value.serializer}") String valSeri) {
-        return new KafkaProviderConfig(servers, keySeri, valSeri);
-    }
-
-    @Bean
-    public KafkaConsumerConfig getKCconfig(@Value("${kafka.bootstrap.servers}") String servers,
-                                           @Value("${kafka.key.deserializer}") String kDes,
-                                           @Value("${kafka.value.deserializer}") String vDes,
-                                           @Value("${kafka.group.id}") String group) {
-        return new KafkaConsumerConfig(servers, kDes, vDes, group);
-    }
-
 
     @Bean
     public KafkaProvide getKP(KafkaProviderConfig kafkaProviderConfig) {

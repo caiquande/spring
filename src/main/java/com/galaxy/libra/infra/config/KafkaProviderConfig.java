@@ -2,6 +2,7 @@ package com.galaxy.libra.infra.config;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
@@ -16,14 +17,13 @@ import java.util.Properties;
  * @time 17:18
  * @p_name bigdataplatform
  */
+
 @Data
-@AllArgsConstructor
 @Component
-@ConfigurationProperties(prefix = "kafka")
 public class KafkaProviderConfig {
-    private String servers;
-    private String kSeri;
-    private String vSeri;
+    private @Value("${kafka.servers}") String servers;
+    private @Value("${kafka.kSeri}") String kSeri;
+    private @Value("${kafka.vSeri}") String vSeri;
 
     public Properties getProps() {
         final Properties properties = new Properties();

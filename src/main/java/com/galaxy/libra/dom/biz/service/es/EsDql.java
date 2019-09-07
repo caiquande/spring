@@ -26,7 +26,7 @@ import java.util.Optional;
  * @time 15:34
  * @p_name bigdataplatform
  */
-public class EsDQL implements DataDQL {
+public class EsDql implements DataDQL {
 
     public SearchRequest genSearchRequest(String indexName) {
         final SearchRequest searchRequest = new SearchRequest(indexName);
@@ -57,9 +57,9 @@ public class EsDQL implements DataDQL {
                                    String toSumField) {
         String group = "group_" + toGroupField;
         String sum = "sum_" + toSumField;
-        final TermsAggregationBuilder group_top = AggregationBuilders.terms(group).field(toSumField);
-        group_top.subAggregation(AggregationBuilders.sum(sum).field(toSumField));
-        searchSourceBuilder.aggregation(group_top);
+        final TermsAggregationBuilder groupTop = AggregationBuilders.terms(group).field(toSumField);
+        groupTop.subAggregation(AggregationBuilders.sum(sum).field(toSumField));
+        searchSourceBuilder.aggregation(groupTop);
         searchRequest.source(searchSourceBuilder);
         return searchRequest;
     }
@@ -68,9 +68,9 @@ public class EsDQL implements DataDQL {
                                    String toMaxField) {
         String group = "group_" + toGroupField;
         String max = "max_" + toMaxField;
-        final TermsAggregationBuilder group_top = AggregationBuilders.terms(group).field(toMaxField);
-        group_top.subAggregation(AggregationBuilders.max(max).field(toMaxField));
-        searchSourceBuilder.aggregation(group_top);
+        final TermsAggregationBuilder groupTop = AggregationBuilders.terms(group).field(toMaxField);
+        groupTop.subAggregation(AggregationBuilders.max(max).field(toMaxField));
+        searchSourceBuilder.aggregation(groupTop);
         searchRequest.source(searchSourceBuilder);
         return searchRequest;
     }
@@ -82,9 +82,9 @@ public class EsDQL implements DataDQL {
         final Terms aggregation = aggregations.get(group);
         final Optional<Terms.Bucket> bucket = Optional.ofNullable(aggregation.getBucketByKey(bucketKey));
         if (bucket.isPresent()) {
-            final Optional<Sum> sum_amnt = Optional.ofNullable(bucket.get().getAggregations().get("sum_amnt"));
-            if (sum_amnt.isPresent()) {
-                return sum_amnt.get().getValue();
+            final Optional<Sum> sumAmnt = Optional.ofNullable(bucket.get().getAggregations().get("sumAmnt"));
+            if (sumAmnt.isPresent()) {
+                return sumAmnt.get().getValue();
             } else {
                 return 0.0;
             }

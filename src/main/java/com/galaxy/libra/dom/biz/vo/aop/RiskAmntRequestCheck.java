@@ -1,7 +1,6 @@
 package com.galaxy.libra.dom.biz.vo.aop;
 
 import com.galaxy.libra.dom.biz.vo.http.RiskAmntRequstBody;
-import com.galaxy.libra.dom.biz.vo.http.RiskAmntResponseBody;
 import com.galaxy.libra.dom.biz.vo.http.filter.RiskAmntHttpHeaderCheck;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -14,8 +13,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
-import java.util.Optional;
-
 /**
  * @author caesar
  * @title
@@ -25,41 +22,45 @@ import java.util.Optional;
  * @time 10:35
  * @p_name spring
  */
-@Aspect
 @Component
+@Aspect
 public class RiskAmntRequestCheck {
 
     @Autowired
     RiskAmntHttpHeaderCheck riskAmntHttpHeaderCheck;
 
-    @Pointcut("call(com.galaxy.libra.interfaces.dispatch.getRes(HttpEntity<RiskAmntRequstBody>))&&args(he)")
+    @Pointcut(value = "execution(* com.galaxy.libra.interfaces.dispatcher.AppController.*(..)) && args(he)"
+            , argNames = "he")
     public void check(HttpEntity<RiskAmntRequstBody> he) {
     }
 
-    @Around("check(he)")
-    public void doCheck(ProceedingJoinPoint joinPoint, HttpEntity<RiskAmntRequstBody> he) {
-        ResponseEntity<RiskAmntResponseBody> res;
+    @Around(value = "check(he)", argNames = "he")
+    public Object doCheck(ProceedingJoinPoint joinPoint, HttpEntity<RiskAmntRequstBody> he) {
         final HttpHeaders headers = he.getHeaders();
-        final Optional<Boolean> aBoolean = Optional.of(headers.containsKey("test-header"));
-        if (aBoolean.isPresent()) {
-            final String s = headers.get("test-header").get(0);
-            if (s.equals("test-header")) {
+        if (headers.containsKey("token")) {
+            final String token = headers.get("token").get(0);
+            final Boolean checkToken = riskAmntHttpHeaderCheck.checkToken(token);
+            if (checkToken) {
                 try {
-                    joinPoint.proceed();
+                    return joinPoint.proceed();
                 } catch (Throwable throwable) {
                     System.out.println(throwable.getMessage());
-                    returnWrong();
+                    return returnException();
                 }
-            }else {
-                returnWrong();
+            } else {
+                return returnWrong();
             }
-        }else {
-            returnWrong();
+        } else {
+            return returnWrong();
         }
     }
 
     public ResponseEntity<String> returnWrong() {
-        return new ResponseEntity<String>("bad request", HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<String>("token is unvalid or missed", HttpStatus.UNAUTHORIZED);
+    }
+
+    public ResponseEntity<String> returnException() {
+        return new ResponseEntity<String>("service throws exception", HttpStatus.SERVICE_UNAVAILABLE);
     }
 
 }

@@ -1,13 +1,8 @@
 package com.galaxy.libra;
 
-import com.galaxy.libra.dom.biz.entity.client.EsClient;
-import com.galaxy.libra.dom.biz.service.es.EsDML;
-import com.galaxy.libra.dom.biz.vo.es.listener.ExistIndexListener;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
-
-import java.util.concurrent.TimeUnit;
 
 /**
  * @author caesar

@@ -14,8 +14,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class RiskAmntHttpHeaderCheck {
 
-    public Boolean check(String header) {
-        if (header != null) {
+    public Boolean checkToken(String token) {
+        if (token != null) {
             return true;
         } else {
             return false;

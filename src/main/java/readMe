@@ -1,0 +1,19 @@
+
+在大数据平台处理业务逻辑的代码框架，有一个示例业务
+
+主体工程分为以下四个包：
+1 interfaces包是对接caller的层，使用controller分发调用
+2 app包是具体服务的抽象层
+3 dom包是业务的领域，在子包agg中组织和编排业务逻辑
+4 infra包是基础设施层，不依赖上面的任何包和其子包
+
+调用流程：
+interfaces的dispatcher调用app，app调用dom的agg的root类实现业务，业务的实现过程会依赖infra提供的服务
+
+对于开发人员，建议只有以下三个包可以出现依赖注入或和其它类有耦合，
+1 app的todo包
+2 dom的agg包
+3 interfaces的dispatcher包
+
+
+

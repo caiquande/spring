@@ -2,6 +2,7 @@ package com.galaxy.libra.infra.config;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
@@ -15,11 +16,8 @@ import org.springframework.stereotype.Component;
  * @p_name spring
  */
 @Data
-@AllArgsConstructor
 @Component
-@ConfigurationProperties(prefix = "es")
 public class EsConfig {
-    private String host;
-    private int port;
-
+    private @Value("${es.host}") String host;
+    private @Value("${es.port}") Integer port;
 }

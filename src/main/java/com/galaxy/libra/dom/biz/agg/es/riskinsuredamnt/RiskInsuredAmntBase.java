@@ -1,15 +1,14 @@
-package com.galaxy.libra.dom.biz.agg.es.riskInsuredAmnt;
+package com.galaxy.libra.dom.biz.agg.es.riskinsuredamnt;
 
 import com.galaxy.libra.dom.biz.entity.client.EsClient;
 import com.galaxy.libra.dom.biz.entity.client.OracleClient;
-import com.galaxy.libra.dom.biz.service.es.EsDML;
-import com.galaxy.libra.dom.biz.service.es.EsDQL;
+import com.galaxy.libra.dom.biz.service.es.EsDml;
+import com.galaxy.libra.dom.biz.service.es.EsDql;
 import com.galaxy.libra.dom.biz.service.oracle.OracleDQL;
 import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import java.util.concurrent.Callable;
 
@@ -22,11 +21,12 @@ import java.util.concurrent.Callable;
  * @time 15:39
  * @p_name bigdataplatform
  */
+@SuppressWarnings("ALL")
 public class RiskInsuredAmntBase {
     private static @Autowired
-    EsDML esDML;
+    EsDml esDML;
     private static @Autowired
-    EsDQL esDQL;
+    EsDql esDQL;
     private static @Autowired
     EsClient esClient;
     private static @Autowired
@@ -46,11 +46,11 @@ public class RiskInsuredAmntBase {
         return oracleClient;
     }
 
-    public static EsDML getEsDML() {
+    public static EsDml getEsDML() {
         return esDML;
     }
 
-    public static EsDQL getEsDQL() {
+    public static EsDql getEsDQL() {
         return esDQL;
     }
 

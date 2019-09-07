@@ -1,4 +1,4 @@
-package com.galaxy.libra.dom.biz.agg.es.riskInsuredAmnt;
+package com.galaxy.libra.dom.biz.agg.es.riskinsuredamnt;
 
 import com.galaxy.libra.dom.biz.entity.client.EsClient;
 import com.galaxy.libra.dom.biz.vo.es.model.TwoFields0;
@@ -66,64 +66,65 @@ public class CalType3 extends RiskInsuredAmntBase {
     }
 
     //todo modify
-    public double mapSql(int size,EsClient esClient, String indexName, String contno, String insuredNo, String riskCode, String polNo,
-                    String toGroupField,
-                       String toSumField, double factor) throws Exception{
-        if (size==146) {
-           return new CT146().CT3Special0();
+    public double mapSql(int size, EsClient esClient, String indexName, String contno, String insuredNo, String riskCode, String polNo,
+                         String toGroupField,
+                         String toSumField, double factor) throws Exception {
+        if (size == 146) {
+            return new Ct146().Ct3Special0();
         } else if (size == 148) {
-           return new CT148().CT3Special1(esClient,indexName,contno,insuredNo,riskCode,polNo,toGroupField,toSumField,factor);
+            return new Ct148().Ct3Special1(esClient, indexName, contno, insuredNo, riskCode, polNo, toGroupField, toSumField, factor);
         } else if (size == 156) {
-           return new CT156().CT3Special2(esClient,indexName,contno,insuredNo,riskCode,polNo,toGroupField,toSumField,factor);
+            return new Ct156().Ct3Special2(esClient, indexName, contno, insuredNo, riskCode, polNo, toGroupField, toSumField, factor);
         } else if (size == 159 || size == 182) {
-           return new CT159182().CT3Special3(esClient,indexName,contno,insuredNo,riskCode,polNo,toGroupField,toSumField,factor);
+            return new Ct159182().Ct3Special3(esClient, indexName, contno, insuredNo, riskCode, polNo, toGroupField, toSumField, factor);
         } else if (size == 186) {
-           return new CT186().CT3Special6(esClient, indexName, contno, insuredNo, riskCode, polNo, toGroupField, toSumField, factor);
+            return new Ct186().Ct3Special6(esClient, indexName, contno, insuredNo, riskCode, polNo, toGroupField, toSumField, factor);
         } else if (size == 233) {
-           return new CT233().CT3Special7(esClient, indexName, contno, insuredNo, riskCode, polNo, toGroupField, toSumField, factor);
+            return new Ct233().Ct3Special7(esClient, indexName, contno, insuredNo, riskCode, polNo, toGroupField, toSumField, factor);
         } else if (size == 281) {
-           return new CT281().CT3Special8(esClient, indexName, contno, insuredNo, riskCode, polNo, toGroupField, toSumField, factor);
+            return new Ct281().Ct3Special8(esClient, indexName, contno, insuredNo, riskCode, polNo, toGroupField, toSumField, factor);
         } else if (size == 335 || size == 407) {
-           return new CT335407().CT3Special9(esClient, indexName, contno, insuredNo, riskCode, polNo, toGroupField, toSumField, factor);
+            return new Ct335407().Ct3Special9(esClient, indexName, contno, insuredNo, riskCode, polNo, toGroupField, toSumField, factor);
         } else if (size == 357) {
-           return new CT357().CT3Special10(esClient, indexName, insuredNo, riskCode, polNo, toGroupField, toSumField, factor);
+            return new Ct357().Ct3Special10(esClient, indexName, insuredNo, riskCode, polNo, toGroupField, toSumField, factor);
         } else if (size == 409 || size == 414) {
-           return new CT409414().CT3Special11(esClient, indexName, contno, insuredNo, riskCode, polNo, toGroupField, toSumField, factor);
+            return new Ct409414().Ct3Special11(esClient, indexName, contno, insuredNo, riskCode, polNo, toGroupField, toSumField, factor);
         } else if (size == 423) {
-           return new CT423().CT3Special12(esClient, indexName, contno, insuredNo, riskCode, polNo, toGroupField, toSumField, factor);
+            return new Ct423().Ct3Special12(esClient, indexName, contno, insuredNo, riskCode, polNo, toGroupField, toSumField, factor);
         } else if (size == 428) {
-           return new CT428().CT3Special13(esClient, indexName, contno, insuredNo, riskCode, polNo, toGroupField, toSumField, factor);
+            return new Ct428().Ct3Special13(esClient, indexName, contno, insuredNo, riskCode, polNo, toGroupField, toSumField, factor);
         } else if (size == 449) {
-           return new CT449().CT3Special14(esClient, indexName, contno, insuredNo, riskCode, polNo, toGroupField, toSumField, factor);
+            return new Ct449().Ct3Special14(esClient, indexName, contno, insuredNo, riskCode, polNo, toGroupField, toSumField, factor);
         } else if (size == 455) {
-           return new CT455().CT3Special15(esClient, indexName, contno, insuredNo, riskCode, polNo, toGroupField, toSumField, factor);
+            return new Ct455().Ct3Special15(esClient, indexName, contno, insuredNo, riskCode, polNo, toGroupField, toSumField, factor);
         } else if (size == 463) {
-           //return new CT463().CT3Special16(esClient, indexName, contno, insuredNo, riskCode, polNo, toGroupField, toSumField, factor);
+            //return new Ct463().Ct3Special16(esClient, indexName, contno, insuredNo, riskCode, polNo, toGroupField, toSumField, factor);
             return 0.0;
         } else if (size == 535 || size == 578) {
-           return new CT535578().CT2Special17(esClient, indexName, contno, insuredNo, riskCode, polNo, toGroupField, toSumField, factor);
+            return new Ct535578().Ct2Special17(esClient, indexName, contno, insuredNo, riskCode, polNo, toGroupField, toSumField, factor);
         } else if (size == 577) {
-           return new CT577().CT3Special18(esClient, indexName, contno, insuredNo, riskCode, polNo, toGroupField, toSumField, factor);
+            return new Ct577().Ct3Special18(esClient, indexName, contno, insuredNo, riskCode, polNo, toGroupField, toSumField, factor);
         } else if (size == 642) {
-           return new CT642().CT3Special19(esClient, indexName, contno, insuredNo, riskCode, polNo, toGroupField, toSumField, factor);
+            return new Ct642().Ct3Special19(esClient, indexName, contno, insuredNo, riskCode, polNo, toGroupField, toSumField, factor);
         } else if (size == 969) {
-           return new CT969().CT3Special20(esClient, indexName, contno, insuredNo, riskCode, polNo, toGroupField, toSumField, factor);
-        }else {
+            return new Ct969().Ct3Special20(esClient, indexName, contno, insuredNo, riskCode, polNo, toGroupField, toSumField, factor);
+        } else {
             return 0.0;
         }
 
     }
 
-     class CT146 {
+    class Ct146 {
         //146
-        public double CT3Special0() {
+        public double Ct3Special0() {
             return 70000.0;
         }
     }
 
-     class CT148 {
+    class Ct148 {
         //148
-        public double CT3Special1(EsClient esClient, String indexName, String contno, String insuredNo, String riskCode, String polNo, String toGroupField,
+        public double Ct3Special1(EsClient esClient, String indexName, String contno, String insuredNo, String riskCode, String polNo,
+                                  String toGroupField,
                                   String toSumField, double factor) throws Exception {
             final Callable<BoolQueryBuilder> queryBuilderCallable = () -> {
                 return QueryBuilders.boolQuery()
@@ -136,9 +137,10 @@ public class CalType3 extends RiskInsuredAmntBase {
         }
     }
 
-     class CT156 {
+    class Ct156 {
         //156
-        public double CT3Special2(EsClient esClient, String indexName, String contno, String insuredNo, String riskCode, String polNo, String toGroupField,
+        public double Ct3Special2(EsClient esClient, String indexName, String contno, String insuredNo, String riskCode, String polNo,
+                                  String toGroupField,
                                   String toSumField, double factor) throws Exception {
             final Callable<BoolQueryBuilder> queryBuilderCallable = () -> {
                 return QueryBuilders.boolQuery()
@@ -151,9 +153,10 @@ public class CalType3 extends RiskInsuredAmntBase {
         }
     }
 
-     class CT159182 {
+    class Ct159182 {
         //159,160,161,162,163,164,165,166,167,168,170,172,173,175,176,179,180,182
-        public double CT3Special3(EsClient esClient, String indexName, String contno, String insuredNo, String riskCode, String polNo, String toGroupField,
+        public double Ct3Special3(EsClient esClient, String indexName, String contno, String insuredNo, String riskCode, String polNo,
+                                  String toGroupField,
                                   String toSumField, double factor) throws Exception {
             final Callable<BoolQueryBuilder> queryBuilderCallable = () -> {
                 return QueryBuilders.boolQuery()
@@ -167,9 +170,10 @@ public class CalType3 extends RiskInsuredAmntBase {
         }
     }
 
-     class CT181206 {
+    class Ct181206 {
         //181,206
-        public double CT3Special4(EsClient esClient, String indexName, String contno, String insuredNo, String riskCode, String polNo, String toGroupField,
+        public double Ct3Special4(EsClient esClient, String indexName, String contno, String insuredNo, String riskCode, String polNo,
+                                  String toGroupField,
                                   String toSumField, double factor) throws Exception {
             final Callable<BoolQueryBuilder> queryBuilderCallable = () -> {
                 return QueryBuilders.boolQuery()
@@ -184,8 +188,9 @@ public class CalType3 extends RiskInsuredAmntBase {
         }
     }
 
-     class CT {
-        public double CT3Special5a(EsClient esClient, String indexName, String contno, String insuredNo, String riskCode, String polNo, String toGroupField,
+    class Ct {
+        public double Ct3Special5a(EsClient esClient, String indexName, String contno, String insuredNo, String riskCode, String polNo,
+                                   String toGroupField,
                                    String toSumField, double factor) throws Exception {
             final Callable<BoolQueryBuilder> queryBuilderCallable = () -> {
                 return QueryBuilders.boolQuery()
@@ -199,7 +204,8 @@ public class CalType3 extends RiskInsuredAmntBase {
             return runSum0Ext(esClient, indexName, insuredNo, riskCode, polNo, toGroupField, toSumField, factor, queryBuilderCallable);
         }
 
-        public double CT3Special5b(EsClient esClient, String indexName, String contno, String insuredNo, String riskCode, String polNo, String toGroupField,
+        public double Ct3Special5b(EsClient esClient, String indexName, String contno, String insuredNo, String riskCode, String polNo,
+                                   String toGroupField,
                                    String toSumField, double factor) throws Exception {
             final Callable<BoolQueryBuilder> queryBuilderCallable = () -> {
                 return QueryBuilders.boolQuery()
@@ -227,9 +233,10 @@ public class CalType3 extends RiskInsuredAmntBase {
         }
     }
 
-     class CT186 {
+    class Ct186 {
         //186
-        public double CT3Special6(EsClient esClient, String indexName, String contno, String insuredNo, String riskCode, String polNo, String toGroupField,
+        public double Ct3Special6(EsClient esClient, String indexName, String contno, String insuredNo, String riskCode, String polNo,
+                                  String toGroupField,
                                   String toSumField, double factor) throws Exception {
             final Callable<BoolQueryBuilder> queryBuilderCallable = () -> {
                 return QueryBuilders.boolQuery()
@@ -244,9 +251,10 @@ public class CalType3 extends RiskInsuredAmntBase {
         }
     }
 
-     class CT233 {
+    class Ct233 {
         //233
-        public double CT3Special7(EsClient esClient, String indexName, String contno, String insuredNo, String riskCode, String polNo, String toGroupField,
+        public double Ct3Special7(EsClient esClient, String indexName, String contno, String insuredNo, String riskCode, String polNo,
+                                  String toGroupField,
                                   String toSumField, double factor) throws Exception {
             final Callable<BoolQueryBuilder> queryBuilderCallable = () -> {
                 return QueryBuilders.boolQuery()
@@ -262,9 +270,10 @@ public class CalType3 extends RiskInsuredAmntBase {
         }
     }
 
-     class CT281 {
+    class Ct281 {
         //281
-        public double CT3Special8(EsClient esClient, String indexName, String contno, String insuredNo, String riskCode, String polNo, String toGroupField,
+        public double Ct3Special8(EsClient esClient, String indexName, String contno, String insuredNo, String riskCode, String polNo,
+                                  String toGroupField,
                                   String toSumField, double factor) throws Exception {
             final String[] codes = {"D00226", "D00227", "D00228", "D00230", "D00231", "D00232"};
             final Callable<BoolQueryBuilder> queryBuilderCallable = () -> {
@@ -281,9 +290,10 @@ public class CalType3 extends RiskInsuredAmntBase {
         }
     }
 
-     class CT335407 {
+    class Ct335407 {
         //335,336,407
-        public double CT3Special9(EsClient esClient, String indexName, String contno, String insuredNo, String riskCode, String polNo, String toGroupField,
+        public double Ct3Special9(EsClient esClient, String indexName, String contno, String insuredNo, String riskCode, String polNo,
+                                  String toGroupField,
                                   String toSumField, double factor) throws Exception {
             double part1 = 0.0;
             double part2 = 0.0;
@@ -317,9 +327,9 @@ public class CalType3 extends RiskInsuredAmntBase {
         }
     }
 
-     class CT357 {
+    class Ct357 {
         //357
-        public double CT3Special10(EsClient esClient, String indexName, String insuredNo, String riskCode, String polNo, String toGroupField,
+        public double Ct3Special10(EsClient esClient, String indexName, String insuredNo, String riskCode, String polNo, String toGroupField,
                                    String toSumField, double factor) throws Exception {
             double part1 = 0.0;
             double part2 = 0.0;
@@ -351,9 +361,10 @@ public class CalType3 extends RiskInsuredAmntBase {
         }
     }
 
-     class CT409414 {
+    class Ct409414 {
         //409,413,414
-        public double CT3Special11(EsClient esClient, String indexName, String contno, String insuredNo, String riskCode, String polNo, String toGroupField,
+        public double Ct3Special11(EsClient esClient, String indexName, String contno, String insuredNo, String riskCode, String polNo,
+                                   String toGroupField,
                                    String toSumField, double factor) throws Exception {
             final Callable<BoolQueryBuilder> queryBuilderCallable = () -> {
                 return QueryBuilders.boolQuery()
@@ -369,9 +380,10 @@ public class CalType3 extends RiskInsuredAmntBase {
         }
     }
 
-     class CT423 {
+    class Ct423 {
         //423
-        public double CT3Special12(EsClient esClient, String indexName, String contno, String insuredNo, String riskCode, String polNo, String toGroupField,
+        public double Ct3Special12(EsClient esClient, String indexName, String contno, String insuredNo, String riskCode, String polNo,
+                                   String toGroupField,
                                    String toSumField, double factor) throws Exception {
             double part1 = 0.0;
             double part2 = 0.0;
@@ -399,9 +411,10 @@ public class CalType3 extends RiskInsuredAmntBase {
         }
     }
 
-     class CT428 {
+    class Ct428 {
         //428
-        public double CT3Special13(EsClient esClient, String indexName, String contno, String insuredNo, String riskCode, String polNo, String toGroupField,
+        public double Ct3Special13(EsClient esClient, String indexName, String contno, String insuredNo, String riskCode, String polNo,
+                                   String toGroupField,
                                    String toSumField, double factor) throws Exception {
             double part1 = 0.0;
             double part2 = 0.0;
@@ -430,9 +443,10 @@ public class CalType3 extends RiskInsuredAmntBase {
         }
     }
 
-     class CT449 {
+    class Ct449 {
         //449
-        public double CT3Special14(EsClient esClient, String indexName, String contno, String insuredNo, String riskCode, String polNo, String toGroupField,
+        public double Ct3Special14(EsClient esClient, String indexName, String contno, String insuredNo, String riskCode, String polNo,
+                                   String toGroupField,
                                    String toSumField, double factor) throws Exception {
             double part1 = 0.0;
             double part2 = 0.0;
@@ -460,9 +474,10 @@ public class CalType3 extends RiskInsuredAmntBase {
         }
     }
 
-     class CT455 {
+    class Ct455 {
         //455
-        public double CT3Special15(EsClient esClient, String indexName, String contno, String insuredNo, String riskCode, String polNo, String toGroupField,
+        public double Ct3Special15(EsClient esClient, String indexName, String contno, String insuredNo, String riskCode, String polNo,
+                                   String toGroupField,
                                    String toSumField, double factor) throws Exception {
             double part1 = 0.0;
             double part2 = 0.0;
@@ -491,9 +506,10 @@ public class CalType3 extends RiskInsuredAmntBase {
         }
     }
 
-     class CT463 {
+    @SuppressWarnings("AliEqualsAvoidNull")
+    class Ct463 {
         //463
-        public List<Double> CT3Special16(EsClient esClient, String indexName, String contno, String insuredNo, String riskCode, String polNo,
+        public List<Double> Ct3Special16(EsClient esClient, String indexName, String contno, String insuredNo, String riskCode, String polNo,
                                          String toGroupField,
                                          String toSumField, double factor) throws Exception {
             final Callable<BoolQueryBuilder> queryBuilderCallable = () -> {
@@ -510,20 +526,25 @@ public class CalType3 extends RiskInsuredAmntBase {
                             .source(new SearchSourceBuilder().query(queryBuilderCallable.call())),
                     new TwoFields0("amntpayyears", "payintv"), 0);
             final ArrayList<Double> res = new ArrayList<>();
-            objects.forEach(o -> {
-                if (o.toString().equals("1")) {
-                    res.add(12 * 0.6 * Double.valueOf(o.toString()));
-                } else if (o.toString().equals("12")) {
-                    res.add(0.6 * Double.valueOf(o.toString()));
+            if (objects != null&&objects.size()>=1) {
+                for (Object o : objects) {
+                    if (o != null) {
+                        if (o.toString().equals("1")) {
+                            res.add(12 * 0.6 * Double.valueOf(o.toString()));
+                        } else if (o.toString().equals("12")) {
+                            res.add(0.6 * Double.valueOf(o.toString()));
+                        }
+                    }
                 }
-            });
+            }
             return res;
         }
     }
 
-     class CT535578 {
+    class Ct535578 {
         //535,578
-        public double CT2Special17(EsClient esClient, String indexName, String contno, String insuredNo, String riskCode, String polNo, String toGroupField,
+        public double Ct2Special17(EsClient esClient, String indexName, String contno, String insuredNo, String riskCode, String polNo,
+                                   String toGroupField,
                                    String toSumField,
                                    double factor) throws Exception {
             final String edorno = selectEdorno(esClient, contno);
@@ -566,9 +587,10 @@ public class CalType3 extends RiskInsuredAmntBase {
         }
     }
 
-     class CT577 {
+    class Ct577 {
         //577
-        public double CT3Special18(EsClient esClient, String indexName, String contno, String insuredNo, String riskCode, String polNo, String toGroupField,
+        public double Ct3Special18(EsClient esClient, String indexName, String contno, String insuredNo, String riskCode, String polNo,
+                                   String toGroupField,
                                    String toSumField, double factor) throws Exception {
             double part1 = 0.0;
             final Callable<BoolQueryBuilder> queryBuilderCallable = () -> {
@@ -596,9 +618,10 @@ public class CalType3 extends RiskInsuredAmntBase {
         }
     }
 
-     class CT642 {
+    class Ct642 {
         //642
-        public double CT3Special19(EsClient esClient, String indexName, String contno, String insuredNo, String riskCode, String polNo, String toGroupField,
+        public double Ct3Special19(EsClient esClient, String indexName, String contno, String insuredNo, String riskCode, String polNo,
+                                   String toGroupField,
                                    String toSumField,
                                    double factor) throws Exception {
             double part0 = 0.0;
@@ -661,9 +684,10 @@ public class CalType3 extends RiskInsuredAmntBase {
         }
     }
 
-     class CT969 {
+    class Ct969 {
         //969
-        public double CT3Special20(EsClient esClient, String indexName, String contno, String insuredNo, String riskCode, String polNo, String toGroupField,
+        public double Ct3Special20(EsClient esClient, String indexName, String contno, String insuredNo, String riskCode, String polNo,
+                                   String toGroupField,
                                    String toSumField, double factor) throws Exception {
             double part1 = 0.0;
             double part2 = 0.0;

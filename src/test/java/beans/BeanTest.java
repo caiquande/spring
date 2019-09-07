@@ -31,9 +31,11 @@ public class BeanTest {
 
     @Test
     public void test() {
-        try(final KafkaProducer<Integer, KafkaMessage> producer = kafkaProvide.getProducer()){
+
+        try (final KafkaProducer<Integer, KafkaMessage> producer = kafkaProvide.getProducer()) {
             System.out.println(producer.toString());
         }
+
     }
 
 }

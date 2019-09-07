@@ -28,7 +28,7 @@ import java.util.*;
  * @time 17:37
  * @p_name bigdataplatform
  */
-public class EsDML implements DataDML {
+public class EsDml implements DataDML {
 
     public void indexExistAsync(EsClient esClient, String indexName, FutureListener listener) {
         final GetIndexRequest getIndexRequest = new GetIndexRequest(indexName);
@@ -41,10 +41,10 @@ public class EsDML implements DataDML {
         System.out.println(exists);
     }
 
-    // create index
+    /* create index*/
     public void createIndexAsync(EsClient esClient,String indexName, Map<String, Object> mapping, FutureListener listener) throws Exception {
         final CreateIndexRequest indexRequest = new CreateIndexRequest(indexName);
-        indexRequest.mapping(new HashMap<String, Object>() {
+        indexRequest.mapping(new HashMap<String, Object>(16) {
             {
                 put("properties", mapping);
             }
@@ -56,7 +56,7 @@ public class EsDML implements DataDML {
         }
     }
 
-    //insert and update single doc
+    /*insert and update single doc*/
     public void insertSingleDocAsync(EsClient esClient,String indexName, String id, Map<String, Object> source, FutureListener listener) throws Exception {
         final IndexRequest indexRequest = new IndexRequest(indexName).id(id).source(source);
         esClient.getClient().indexAsync(indexRequest, RequestOptions.DEFAULT, listener);
@@ -67,7 +67,7 @@ public class EsDML implements DataDML {
         esClient.getClient().updateAsync(updateRequest, RequestOptions.DEFAULT, listener);
     }
 
-    //insert and update bulk
+    /*insert and update bulk*/
     public void bulkInsert(EsClient esClient,String indexName, List<Map<String, Object>> source, String id, FutureListener listener) throws Exception {
         final BulkRequest bulkRequest = new BulkRequest();
         source.forEach(e -> {
@@ -76,7 +76,7 @@ public class EsDML implements DataDML {
         esClient.getClient().bulkAsync(bulkRequest, RequestOptions.DEFAULT, listener);
     }
 
-    // search singel doc
+     /*search singel doc*/
     public Object searchById(EsClient esClient,String index, String id, String idVal, String include, String exclude) throws Exception {
         final SearchRequest searchRequest = new SearchRequest(index)
                 .source(new SearchSourceBuilder().query(QueryBuilders.termQuery(id, idVal)).fetchSource(include, exclude));
@@ -94,7 +94,7 @@ public class EsDML implements DataDML {
         }
     }
 
-    //search by request
+    /*search by request*/
     public List<Object> searchByRequest(EsClient esClient, SearchRequest searchRequest, SearchContainer container, int flag) throws Exception {
         final ArrayList<Object> res = new ArrayList<Object>();
         final SearchResponse searchResponse = esClient.getClient().search(searchRequest, RequestOptions.DEFAULT);

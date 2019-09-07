@@ -1,4 +1,4 @@
-package com.galaxy.libra.dom.biz.agg.es.riskInsuredAmnt;
+package com.galaxy.libra.dom.biz.agg.es.riskinsuredamnt;
 
 import com.galaxy.libra.dom.biz.entity.client.EsClient;
 import com.galaxy.libra.dom.biz.entity.client.OracleClient;
@@ -33,4 +33,10 @@ public class Root {
         return calType3.mapSql(length, esClient, indexName, contno, insuredNo, riskCode, polNo, toGroupField,
                 toSumField, factor);
     }
+
+    public double handleRequestTest(String indexName, String contno, String insuredNo, String riskCode, String polNo, String toGroupField,
+                                String toSumField, double factor) throws Exception{
+        return 1.0;
+    }
+
 }
