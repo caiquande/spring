@@ -1,8 +1,6 @@
 package com.galaxy.libra.infra.config;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
@@ -19,11 +17,12 @@ import java.util.Properties;
  */
 @Data
 @Component
+@ConfigurationProperties(prefix = "kafka.c")
 public class KafkaConsumerConfig {
-    private @Value("${kafka.servers}") String servers;
-    private @Value("${kafka.kDes}") String kDes;
-    private @Value("${kafka.vDes}") String vDes;
-    private @Value("${kafka.group}") String group;
+    private String servers;
+    private String kDes;
+    private String vDes;
+    private String group;
 
     public Properties getProps() {
         final Properties properties = new Properties();

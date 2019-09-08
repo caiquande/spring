@@ -17,7 +17,8 @@ import org.springframework.stereotype.Component;
  */
 @Data
 @Component
+@ConfigurationProperties(prefix = "es")
 public class EsConfig {
-    private @Value("${es.host}") String host;
-    private @Value("${es.port}") Integer port;
+    private String host;
+    private Integer port;
 }

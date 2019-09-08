@@ -1,5 +1,6 @@
 package com.galaxy.libra;
 
+import com.galaxy.libra.dom.biz.entity.client.EsClient;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;

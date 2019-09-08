@@ -22,17 +22,43 @@ import java.util.concurrent.Callable;
  * @p_name bigdataplatform
  */
 @SuppressWarnings("ALL")
+
 public class RiskInsuredAmntBase {
-    private static @Autowired
+    private static
     EsDml esDML;
-    private static @Autowired
+    private static
     EsDql esDQL;
-    private static @Autowired
+    private static
     EsClient esClient;
-    private static @Autowired
+    private static
     OracleDQL oracleDQL;
-    private static @Autowired
+    private static
     OracleClient oracleClient;
+
+    @Autowired
+    public void setEsDML(EsDml esDML) {
+        RiskInsuredAmntBase.esDML = esDML;
+    }
+
+    @Autowired
+    public void setEsDQL(EsDql esDQL) {
+        RiskInsuredAmntBase.esDQL = esDQL;
+    }
+
+    @Autowired
+    public void setEsClient(EsClient esClient) {
+        RiskInsuredAmntBase.esClient = esClient;
+    }
+
+    @Autowired
+    public void setOracleDQL(OracleDQL oracleDQL) {
+        RiskInsuredAmntBase.oracleDQL = oracleDQL;
+    }
+
+    @Autowired
+    public void setOracleClient(OracleClient oracleClient) {
+        RiskInsuredAmntBase.oracleClient = oracleClient;
+    }
 
     public static EsClient getEsClient() {
         return esClient;
