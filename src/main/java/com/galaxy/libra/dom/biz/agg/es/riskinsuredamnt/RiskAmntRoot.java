@@ -2,6 +2,7 @@ package com.galaxy.libra.dom.biz.agg.es.riskinsuredamnt;
 
 import com.galaxy.libra.dom.biz.entity.client.EsClient;
 import com.galaxy.libra.dom.biz.entity.client.OracleClient;
+import com.galaxy.libra.dom.biz.event.RiskInsuredAmntEvent;
 import com.galaxy.libra.dom.biz.service.oracle.OracleDQL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,7 +17,7 @@ import org.springframework.stereotype.Component;
  * @p_name spring
  */
 @Component
-public class Root {
+public class RiskAmntRoot {
     @Autowired
     private CalType1And4 calType1And4;
     @Autowired
@@ -32,6 +33,10 @@ public class Root {
         final int length = getSql.toCharArray().length;
         return calType3.mapSql(length, esClient, indexName, contno, insuredNo, riskCode, polNo, toGroupField,
                 toSumField, factor);
+    }
+
+    public double handleRequestEvent(RiskInsuredAmntEvent riskInsuredAmntEvent) throws Exception{
+        return 1.0;
     }
 
     public double handleRequestTest(String indexName, String contno, String insuredNo, String riskCode, String polNo, String toGroupField,

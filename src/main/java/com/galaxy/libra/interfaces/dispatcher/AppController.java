@@ -1,9 +1,13 @@
 package com.galaxy.libra.interfaces.dispatcher;
 
-import com.galaxy.libra.app.todo.RiskInsuredAmnt;
+import com.galaxy.libra.app.audit.RiskAmntSeviceAudit;
+import com.galaxy.libra.app.task.RiskInsuredAmnt;
+import com.galaxy.libra.dom.biz.event.RiskInsuredAmntEvent;
 import com.galaxy.libra.dom.biz.vo.http.RiskAmntRequstBody;
 import com.galaxy.libra.dom.biz.vo.http.RiskAmntResponseBody;
+import com.galaxy.libra.infra.bus.Bus;
 import com.galaxy.libra.infra.config.OracleClientConfig;
+import com.galaxy.libra.interfaces.dto.risk.RiskDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
@@ -12,6 +16,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.PostConstruct;
 
 /**
  * @author caesar
@@ -28,14 +34,29 @@ import org.springframework.web.bind.annotation.RestController;
 public class AppController {
 
     @Autowired
+    private RiskAmntSeviceAudit riskAmntSeviceAudit;
+
+    @Autowired
+    private Bus bus;
+
+    @Autowired
     private RiskInsuredAmnt riskInsuredAmnt;
 
     @Autowired
     private OracleClientConfig oracleClientConfig;
 
+    @PostConstruct
+    public void init() {
+        bus.getBus().register(riskAmntSeviceAudit);
+    }
+
     @PostMapping(path = "/post", consumes = "application/json")
-    public ResponseEntity<RiskAmntResponseBody> getRes(HttpEntity<RiskAmntRequstBody> riskAmntRequstBody) throws Exception {
-        return new ResponseEntity<>(new RiskAmntResponseBody(riskInsuredAmnt.todo(riskAmntRequstBody), true), HttpStatus.OK);
+    public ResponseEntity<RiskAmntResponseBody> getRes(HttpEntity<RiskAmntRequstBody> riskAmntRequstBody, @Autowired RiskDto riskDto) throws Exception {
+        //return new ResponseEntity<>(new RiskAmntResponseBody(riskInsuredAmnt.todo(riskAmntRequstBody), true), HttpStatus.OK);
+        final RiskInsuredAmntEvent riskInsuredAmntEvent = riskDto.genAndPostEvent(riskAmntRequstBody, bus);
+        return new ResponseEntity<>(new RiskAmntResponseBody(riskInsuredAmntEvent.getRes(),
+                true),
+                HttpStatus.OK);
     }
 
     @GetMapping(path = "/config")

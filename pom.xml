@@ -96,6 +96,13 @@
             <version>2.1.7.RELEASE</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.46</version>
+        </dependency>
+
         <!-- add local jar -->
         <dependency>
             <groupId>t</groupId>
