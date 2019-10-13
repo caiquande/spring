@@ -14,13 +14,14 @@ import javax.persistence.*;
  * @p_name bigdata-platform-etl
  */
 @Data
-@Entity(name = "resume")
-@Table(name = "resume")
+@Entity
+@Table(name = "lcpol")
 public class ResumeVo {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
-    private String name;
-    private Double score;
+    private String polno;
+    private String contno;
+    private String insuredno;
+    private String riskcode;
 
 }

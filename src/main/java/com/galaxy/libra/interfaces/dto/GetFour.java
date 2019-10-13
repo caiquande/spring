@@ -9,6 +9,7 @@ package com.galaxy.libra.interfaces.dto;
  * @time 10:09
  * @p_name bigdata-platform-etl
  */
-public interface GetScore {
-    Double getScore();
+public interface GetFour {
+    String getPolno();
+    String getContno();
 }

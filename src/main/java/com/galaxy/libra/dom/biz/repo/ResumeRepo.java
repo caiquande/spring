@@ -1,11 +1,13 @@
 package com.galaxy.libra.dom.biz.repo;
 
 import com.galaxy.libra.dom.biz.vo.orcl.ResumeVo;
-import com.galaxy.libra.interfaces.dto.GetScore;
+import com.galaxy.libra.interfaces.dto.GetFour;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.ArrayList;
 
 /**
  * @author caesar
@@ -18,6 +20,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface ResumeRepo extends CrudRepository<ResumeVo, Integer> {
-    @Query(value = "select score from resume where name=:pname", nativeQuery = true)
-    GetScore findBySpecialName(@Param("pname") String name);
+    @Query(value = "select POLNO,CONTNO,INSUREDNO,RISKCODE from LCPOL where ROWNUM<:rn", nativeQuery = true)
+    ArrayList<GetFour> findBySpecialRownum(@Param("rn") int rownum);
 }
+
